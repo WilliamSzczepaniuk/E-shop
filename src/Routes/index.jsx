@@ -1,20 +1,16 @@
-import { Switch , Route } from 'react-router-dom'
+import { Routes , Route } from 'react-router-dom'
 import CartPage from '../Pages/PageCart'
 import PageHome from '../Pages/PageHome'
 
 
-const Routes = () => {
+const Rotas = () => {
 
     return(
-        <Switch>
-            <Route exact path='/'>
-                <PageHome/>
-            </Route>
-            <Route exact path='/cart'>
-                <CartPage/>
-            </Route>
-        </Switch>
+        <Routes>
+            <Route path='/' element={<PageHome/>}/>
+            <Route path='/cart' element={<CartPage/>}/>
+        </Routes>
     )
 
 }
-export default Routes
+export default Rotas

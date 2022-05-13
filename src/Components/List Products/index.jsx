@@ -1,15 +1,16 @@
-import { useContext } from "react"
+
 import { Container } from "./styles"
-import { ProductsContext } from "../../Providers/Products"
+
 import Card from "../Card"
-const ListProducts = () => {
+const ListProducts = ({products, cartItem}) => {
     
-    const { products } = useContext(ProductsContext)
-    console.log(products)
+
+
     return(
-        <Container>
+        <Container >
             {products.map((product)=>(
                 <Card 
+                cartItem={cartItem}
                 key={product.id}
                 product={product}></Card>
             ))}

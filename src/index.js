@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ProductsProvider } from './Providers/Products';
 import { BrowserRouter } from 'react-router-dom';
+import { CartProvider } from './Providers/Cart';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +13,9 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <ProductsProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </ProductsProvider>
     </React.StrictMode>
   </BrowserRouter>
