@@ -1,25 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { ProductsProvider } from './Providers/Products';
-import { BrowserRouter } from 'react-router-dom';
-import { CartProvider } from './Providers/Cart';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ProductsProvider } from "./Providers/Products";
+import { BrowserRouter } from "react-router-dom";
+import { CartProvider } from "./Providers/Cart";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./styles/theme.jsx";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
       <ProductsProvider>
         <CartProvider>
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </CartProvider>
       </ProductsProvider>
     </React.StrictMode>
   </BrowserRouter>
-
 );
 
 // If you want to start measuring performance in your app, pass a function
