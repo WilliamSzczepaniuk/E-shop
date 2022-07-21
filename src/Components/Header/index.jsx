@@ -15,6 +15,8 @@ import Button from "@mui/material/Button";
 import Badge from "@mui/material/Badge";
 import { useContext } from "react";
 import { CartContext } from "../../Providers/Cart";
+import HomeIcon from '@mui/icons-material/Home';
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -80,6 +82,7 @@ export const Header = ({ onCart = false }) => {
   };
 
   const handleChange = (ev) => {
+    console.log(ev)
     setInputValue(ev.target.value);
   };
 
@@ -90,6 +93,7 @@ export const Header = ({ onCart = false }) => {
       <AppBar position="static">
         <Toolbar>
           <IconButton
+          
             className={classes.menuButton}
             edge="start"
             color="inherit"
@@ -112,6 +116,8 @@ export const Header = ({ onCart = false }) => {
               <SearchIcon />
             </Box>
             <InputBase
+              value={inputValue}
+              onChange={handleChange}
               _placeholder={{ color: "white" }}
               inputProps={{ "aria-label": "search" }}
               placeholder="Search..."
@@ -121,17 +127,19 @@ export const Header = ({ onCart = false }) => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
+            component={"div"}
               edge="end"
               aria-label="Go to shopping cart"
               size="large"
             >
-              <Badge color="error" badgeContent={productsCart.length}>
+              <Badge component={"div"} color="error" badgeContent={productsCart.length}>
                 <Button
-                  onClick={routesButton}
-                  startIcon={<Shop />}
+
+                   onClick={routesButton}
+                  startIcon={onCart ? <Shop /> : <HomeIcon/>}
                   variant="contained"
                 >
-                  Cart
+                  {onCart ? "Cart" : "Home"}
                 </Button>
               </Badge>
             </IconButton>

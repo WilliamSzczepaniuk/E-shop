@@ -8,7 +8,7 @@ const ListProducts = ({ products, cartItem }) => {
           cartItem={cartItem}
           key={product.id}
           product={product}
-        ></CardComponent>
+        />
       ))}
     </Box>
   );

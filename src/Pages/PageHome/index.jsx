@@ -10,7 +10,7 @@ const PageHome = () => {
   return (
     <Box>
       <Header onCart={false} />
-      <Typography variant="h4">Eletronics</Typography>
+      <Typography margin="30px" variant="h3">Eletronics</Typography>
       <Box>
         <ListProducts cartItem={false} products={products} />
         <Box sx={{ flexGrow: 1 }} />
