@@ -22,36 +22,37 @@ export const CardComponent = ({ product, cartItem }) => {
       sx={{
         margin: 1,
         display: "flex",
-        maxWidth: 300,
-        minWidth: 280,
-        MaxHeight: 380,
-        minHeight: 320,
+        width:"300px",
+        height:"360px",
         flexDirection: "column",
         flexGrow: 1,
       }}
     >
       <CardMedia
         sx={{
-          maxHeight: "220px",
-          maxWidth: "100px",
-          boxSizing: "content-box",
+          minHeight:"150px",
+
+          minWidth:"100px",
+          maxWidth: "120px",
+
           margin: "0 auto",
         }}
         component={"img"}
         image={image}
         alt={"image"}
       />
-      <CardContent sx={{ flexGrow: 1 }}>
+      <CardContent sx={{ flexGrow: 1,justifyContent:"center" ,flexDirection:"column", display:"flex"}}>
         <Typography
-          alignSelf={"flex-end"}
+          textAlign={"initial"}
           color="GrayText"
           gutterBottom
           variant="h6"
+          fontSize={16}
           component="div"
         >
           {reduceTitle}
         </Typography>
-        <Typography color={"GrayText"} variant="h6">
+        <Typography marginLeft={2} textAlign={"initial"} color={"GrayText"} variant="h6" fontSize={14}>
           {price.toLocaleString("pt-BR", {
             minimumFractionDigits: 2,
             style: "currency",

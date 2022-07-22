@@ -134,7 +134,6 @@ export const Header = ({ onCart = false }) => {
             >
               <Badge component={"div"} color="error" badgeContent={productsCart.length}>
                 <Button
-
                    onClick={routesButton}
                   startIcon={onCart ? <Shop /> : <HomeIcon/>}
                   variant="contained"
