@@ -1,6 +1,4 @@
 import { createTheme } from "@mui/material";
-import * as React from "react";
-import ReactDOM from "react-dom";
 import { red } from "@mui/material/colors";
 export const theme = createTheme({
   roxo: red[500],

@@ -8,7 +8,7 @@ import { alpha } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 const CartPage = () => {
   const { productsCart } = useContext(CartContext);
-  console.log(productsCart)
+
   return (
     <Box>
       <Header onCart={true}/>

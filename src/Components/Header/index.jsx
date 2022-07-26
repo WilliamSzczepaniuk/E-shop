@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Shop from "@mui/icons-material/ShoppingCartCheckoutOutlined";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import { alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -15,8 +15,8 @@ import Button from "@mui/material/Button";
 import Badge from "@mui/material/Badge";
 import { useContext } from "react";
 import { CartContext } from "../../Providers/Cart";
-import HomeIcon from '@mui/icons-material/Home';
-
+import HomeIcon from "@mui/icons-material/Home";
+import { ProductsContext } from "../../Providers/Products";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
       transition: theme.transitions.create("width"),
       width: "100%",
       [theme.breakpoints.up("sm")]: {
-        width: "20ch",
+        width: "16ch",
         "&:focus": {
           width: "28ch",
         },
@@ -73,19 +73,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export const Header = ({ onCart = false }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(" ");
   const { productsCart } = useContext(CartContext);
+  const { products, changeProducts, onSearch, setOnSearch } =
+    useContext(ProductsContext);
+
   const navigate = useNavigate();
+  useEffect(() => {}, []);
 
-  const routesButton = () => {
-    onCart === true ? navigate("/") : navigate("/cart");
+  const routesButton = () => (onCart ? navigate("/") : navigate("/cart"));
+
+  const handleChange = (event) => {
+    setOnSearch(true);
+    const searchValue = products.filter((product) => {
+      let includes = false;
+      product.title
+        .toLowerCase()
+        .split(" ")
+        .forEach((string) => {
+          const subStrings = string.slice(0, inputValue.length);
+          if (subStrings === inputValue.toLowerCase()) {
+            console.log(subStrings);
+            return (includes = true);
+          }
+        });
+      return includes;
+    });
+    return changeProducts(searchValue);
   };
-
-  const handleChange = (ev) => {
-    console.log(ev)
-    setInputValue(ev.target.value);
-  };
-
   const classes = useStyles();
 
   return (
@@ -93,7 +108,6 @@ export const Header = ({ onCart = false }) => {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-          
             className={classes.menuButton}
             edge="start"
             color="inherit"
@@ -117,7 +131,14 @@ export const Header = ({ onCart = false }) => {
             </Box>
             <InputBase
               value={inputValue}
-              onChange={handleChange}
+              onKeyUp={(e) => handleChange(e)}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+              }}
+              sx={{
+                color: "inherit",
+                boxShadow: onSearch ? "0px 4px 7px -4px #000000" : "none",
+              }}
               _placeholder={{ color: "white" }}
               inputProps={{ "aria-label": "search" }}
               placeholder="Search..."
@@ -125,20 +146,24 @@ export const Header = ({ onCart = false }) => {
             />
           </Box>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <IconButton
-            component={"div"}
+              component={"div"}
               edge="end"
               aria-label="Go to shopping cart"
               size="large"
             >
-              <Badge component={"div"} color="error" badgeContent={productsCart.length}>
+              <Badge
+                component={"div"}
+                color="error"
+                badgeContent={productsCart.length}
+              >
                 <Button
-                   onClick={routesButton}
-                  startIcon={onCart ? <Shop /> : <HomeIcon/>}
+                  onClick={routesButton}
+                  startIcon={!onCart ? <Shop /> : <HomeIcon />}
                   variant="contained"
                 >
-                  {onCart ? "Cart" : "Home"}
+                  {!onCart ? "Cart" : "Home"}
                 </Button>
               </Badge>
             </IconButton>

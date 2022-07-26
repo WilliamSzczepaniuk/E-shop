@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 export const CardComponent = ({ product, cartItem }) => {
-  const { addToCart, removeFromCart, productsCart } = useContext(CartContext);
+  const { addToCart, removeFromCart } = useContext(CartContext);
   const { image, title, price } = product;
   const reduceTitle = title
     .split(" ")
@@ -25,7 +25,7 @@ export const CardComponent = ({ product, cartItem }) => {
         width:"300px",
         height:"360px",
         flexDirection: "column",
-        flexGrow: 1,
+
       }}
     >
       <CardMedia
