@@ -1,12 +1,16 @@
-import ListProducts from "../../Components/List Products";
+import { ListProducts } from "../../Components/ListProducts";
 import { Header } from "../../Components/Header/index.jsx";
 import { ProductsContext } from "../../Providers/Products";
 import { useContext } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-const PageHome = () => {
+import { Footer } from "../../Components/Fotter";
+import { useEffect } from "react";
+
+export const PageHome = () => {
   const { products, searchProducts, onSearch } = useContext(ProductsContext);
-  console.log(onSearch);
+
+  useEffect(() => {}, []);
   return (
     <Box>
       <Header onCart={false} />
@@ -23,8 +27,7 @@ const PageHome = () => {
         )}
         <Box sx={{ flexGrow: 1 }} />
       </Box>
+      <Footer />
     </Box>
   );
 };
-
-export default PageHome;

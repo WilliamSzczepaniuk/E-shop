@@ -1,14 +1,14 @@
-# Getting Started with Create React App
+# LazuliShop E-comerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto criado usando react
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `Tecnologias utilizadas`
 
-Runs the app in the development mode.\
+Material UI
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\

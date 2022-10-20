@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import CartPage from "../Pages/PageCart";
-import PageHome from "../Pages/PageHome";
+import { CartPage } from "../Pages/PageCart";
+import { PageHome } from "../Pages/PageHome";
 
 const Rotas = () => {
   return (
