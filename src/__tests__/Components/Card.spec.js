@@ -15,6 +15,6 @@ describe("Testing Card Component", () => {
       />
     );
   });
-  const titulo = screen.getByLabelText("test");
+  const titulo = screen.getByText("test");
   expect(titulo).toBeInTheDocument();
 });

@@ -49,10 +49,10 @@ export const InputSearch = () => {
       onChange={(e) => {
         setInputValue(e.target.value);
       }}
-      sx={{
-        color: "inherit",
-        boxShadow: onSearch ? "0px 4px 7px -4px #000000" : "none",
-      }}
+      // sx={{
+      //   color: "inherit",
+      //   boxShadow: onSearch ? "0px 4px 7px -4px #000000" : "none",
+      // }}
       _placeholder={{ color: "white" }}
       inputProps={{ "aria-label": "search" }}
       placeholder="Search..."

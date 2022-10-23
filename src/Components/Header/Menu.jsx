@@ -5,7 +5,7 @@ export const Menu = ({ toggle }) => {
   return (
     <>
       {toggle ? (
-        <MenuList>
+        <MenuList sx={{ height: { xs: "100%" } }}>
           <MenuItem>Profile</MenuItem>
           <MenuItem>Home</MenuItem>
         </MenuList>

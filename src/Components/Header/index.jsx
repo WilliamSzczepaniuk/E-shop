@@ -1,27 +1,38 @@
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../Providers/Cart";
+import { ProductsContext } from "../../Providers/Products";
+import { InputSearch } from "./InputSearch";
+import { Menu } from "./Menu.jsx";
 import Box from "@mui/material/Box";
 import Shop from "@mui/icons-material/ShoppingCartCheckoutOutlined";
-import { makeStyles } from "@material-ui/core";
-import { alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Badge from "@mui/material/Badge";
-import { useContext, useState } from "react";
-import { CartContext } from "../../Providers/Cart";
 import HomeIcon from "@mui/icons-material/Home";
-import { ProductsContext } from "../../Providers/Products";
-import { InputSearch } from "./InputSearch";
-import { Menu } from "./Menu.jsx";
+import LazuliLogo from "../../assets/LazuliLogo.jpeg";
+import SearchIcon from "@material-ui/icons/Search";
+import MenuSharp from "@material-ui/icons/MenuSharp";
+import { alpha } from "@mui/material/styles";
+import { makeStyles } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
+  Buttons: {
+    backgroundColor: "white",
+  },
+  Icons: {
+    marginLeft: 1,
+    color: "black",
+  },
   grow: {
     flexGrow: 1,
   },
   menuButton: {
+    color: "black",
     marginRight: theme.spacing(2),
   },
   title: {
@@ -31,12 +42,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   search: {
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.white, 0.2),
     "&:hover": {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     position: "relative",
-    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      padding: theme.spacing(2),
+      width: "20%",
+    },
     marginLeft: 0,
     marginRight: 10,
     borderRadius: theme.shape.borderRadius,
@@ -47,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
+    left: 20,
     height: "100%",
     position: "absolute",
     pointerEvents: "none",
@@ -67,19 +82,19 @@ export const Header = ({ onCart = false }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.grow} sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <div className={classes.grow}>
+      <AppBar sx={{ backgroundColor: "white" }} position="static">
         <Toolbar>
           <IconButton
             className={classes.menuButton}
             edge="start"
-            color="inherit"
+            color="secondary"
             aria-label="open drawer"
             sx={{ mr: 2 }}
             onClick={() => (toggle ? setToggle(false) : setToggle(true))}
           >
             <Menu toggle={toggle} />
-            <MenuIcon />
+            <Avatar sx={{ width: "50px" }} variant="rounded" src={LazuliLogo} />
           </IconButton>
           <Typography
             className={classes.menuButton}
@@ -90,15 +105,10 @@ export const Header = ({ onCart = false }) => {
           >
             LazuliShop
           </Typography>
-          <Box className={classes.search}>
-            <Box className={classes.searchIcon}>
-              <SearchIcon />
-            </Box>
-            <InputSearch />
-          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <IconButton
+              color="secondary"
               component={"div"}
               edge="end"
               aria-label="Go to shopping cart"
@@ -110,17 +120,31 @@ export const Header = ({ onCart = false }) => {
                 badgeContent={productsCart.length}
               >
                 <Button
+                  color="secondary"
+                  className={classes.Buttons}
                   onClick={routesButton}
-                  startIcon={!onCart ? <Shop /> : <HomeIcon />}
+                  sx={{ backgroundColor: "white" }}
+                  startIcon={
+                    !onCart ? (
+                      <Shop className={classes.Icons} />
+                    ) : (
+                      <HomeIcon className={classes.Icons} />
+                    )
+                  }
                   variant="contained"
-                >
-                  {!onCart ? "Cart" : "Home"}
-                </Button>
+                />
               </Badge>
             </IconButton>
           </Box>
+          <MenuSharp className={classes.Icons} />
         </Toolbar>
       </AppBar>
+      <Box className={classes.search}>
+        <Box className={classes.searchIcon}>
+          <SearchIcon />
+        </Box>
+        <InputSearch />
+      </Box>
     </div>
   );
 };

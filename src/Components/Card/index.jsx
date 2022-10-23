@@ -48,9 +48,8 @@ export const CardComponent = ({ product, cartItem }) => {
           variant="h6"
           fontSize={16}
           component="div"
-          sx={{ name: "test" }}
         >
-          {reduceTitle || "123"}
+          {reduceTitle || ""}
         </Typography>
         <Typography
           marginLeft={2}
