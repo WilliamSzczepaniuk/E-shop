@@ -15,9 +15,11 @@ export const PageHome = () => {
     <Box>
       <Header onCart={false} />
       <Typography margin="30px" variant="h3">
-        Eletronics
+        Smartphones
       </Typography>
-      <Box>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", marginLeft: "3em" }}
+      >
         <ListProducts
           cartItem={false}
           products={onSearch ? searchProducts : products}

@@ -41,34 +41,34 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
-  search: {
-    backgroundColor: alpha(theme.palette.common.white, 0.2),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    position: "relative",
-    [theme.breakpoints.up("sm")]: {
-      padding: theme.spacing(2),
-      width: "20%",
-    },
-    marginLeft: 0,
-    marginRight: 10,
-    borderRadius: theme.shape.borderRadius,
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    left: 20,
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  // search: {
+  //   backgroundColor: alpha(theme.palette.common.white, 0.2),
+  //   "&:hover": {
+  //     backgroundColor: alpha(theme.palette.common.white, 0.25),
+  //   },
+  //   position: "relative",
+  //   [theme.breakpoints.up("sm")]: {
+  //     padding: theme.spacing(2),
+  //     width: "20%",
+  //   },
+  //   marginLeft: 0,
+  //   marginRight: 10,
+  //   borderRadius: theme.shape.borderRadius,
+  //   [theme.breakpoints.up("sm")]: {
+  //     marginLeft: theme.spacing(1),
+  //     width: "auto",
+  //   },
+  // },
+  // searchIcon: {
+  //   padding: theme.spacing(0, 2),
+  //   left: 200,
+  //   height: "100%",
+  //   position: "absolute",
+  //   pointerEvents: "none",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
 }));
 export const Header = ({ onCart = false }) => {
   const { productsCart } = useContext(CartContext);
@@ -139,12 +139,12 @@ export const Header = ({ onCart = false }) => {
           <MenuSharp className={classes.Icons} />
         </Toolbar>
       </AppBar>
-      <Box className={classes.search}>
+      {/* <Box className={classes.search}>
         <Box className={classes.searchIcon}>
           <SearchIcon />
-        </Box>
-        <InputSearch />
-      </Box>
+        </Box> */}
+      {/* <InputSearch /> */}
+      {/* </Box> */}
     </div>
   );
 };
