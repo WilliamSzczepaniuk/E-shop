@@ -7,8 +7,8 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    "&:hover": { backgroundColor: "green" },
+  ButtonCard: {
+    fontSize: { xs: "1rem", md: "2rem" },
   },
 }));
 export const ButtonCard = ({ cartItem, product }) => {
@@ -19,23 +19,24 @@ export const ButtonCard = ({ cartItem, product }) => {
       {cartItem ? (
         <Button
           color="secondary"
-          sx={{ flexGrow: 1 }}
           variant="contained"
           endIcon={<RemoveShoppingCartOutlinedIcon />}
           onClick={() => removeFromCart(product)}
         >
-          Remove from cart
+          Remover
         </Button>
       ) : (
         <Button
+          sx={{
+            flexGrow: 1,
+            fontSize: { xs: "0.7rem", md: "0.8rem" },
+          }}
           color="secondary"
-          className={classes.button}
-          sx={{ flexGrow: 1 }}
           variant="contained"
           endIcon={<AddShoppingCartOutlinedIcon />}
           onClick={() => addToCart(product)}
         >
-          Add to cart
+          Comprar
         </Button>
       )}
     </Box>

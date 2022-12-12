@@ -3,9 +3,15 @@ import { CardComponent } from "../Card";
 
 export const ListProducts = ({ products, cartItem }) => {
   return (
-    <Box flexWrap={"wrap"} display={"flex"}>
-      {products.map((product) => (
-        <CardComponent cartItem={cartItem} key={product.id} product={product} />
+    <Box
+      sx={{
+        width: "auto",
+        overflowX: { xs: "scroll", md: "inherit" },
+        display: "flex",
+      }}
+    >
+      {products.map((product, i) => (
+        <CardComponent cartItem={cartItem} key={i} product={product} />
       ))}
     </Box>
   );

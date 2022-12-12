@@ -9,7 +9,7 @@ export const CartPage = () => {
   const { productsCart } = useContext(CartContext);
 
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "rgb(250,250,251)" }}>
       <Header onCart={true} />
       <Typography marginTop={5} variant="h3">
         Suas compras
@@ -17,7 +17,7 @@ export const CartPage = () => {
       {productsCart.length > 0 ? (
         <ListProducts products={productsCart} cartItem={true} />
       ) : (
-        <Typography marginTop={10} variant="h4">
+        <Typography marginTop={10} variant="h6">
           Nada por aqui
         </Typography>
       )}

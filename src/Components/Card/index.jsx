@@ -4,7 +4,13 @@ import { ButtonCard } from "./Button";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { alpha } from "@mui/material/styles";
+import { makeStyles } from "@material-ui/core";
 export const CardComponent = ({ product, cartItem }) => {
+  const useStyles = (theme) => ({
+    boxCard: {},
+  });
+  const classes = useStyles();
   const { image, title, price } = product;
   const reduceTitle = title
     .split(" ")
@@ -15,18 +21,21 @@ export const CardComponent = ({ product, cartItem }) => {
   return (
     <Card
       sx={{
-        margin: 1,
         display: "flex",
-        width: "300px",
+        minWidth: "268px",
+        width: "270px",
         height: "360px",
         flexDirection: "column",
+        margin: "15px",
+        padding: "0px 15px 5px 15px",
       }}
     >
       <CardMedia
         sx={{
+          maxHeight: "200px",
           minHeight: "150px",
-          minWidth: "100px",
-          maxWidth: "120px",
+          minWidth: "120px",
+          maxWidth: "100%",
           margin: "0 auto",
         }}
         component={"img"}
@@ -49,7 +58,7 @@ export const CardComponent = ({ product, cartItem }) => {
           fontSize={16}
           component="div"
         >
-          {reduceTitle || ""}
+          {title || ""}
         </Typography>
         <Typography
           marginLeft={2}

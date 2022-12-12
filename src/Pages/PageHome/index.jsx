@@ -5,21 +5,23 @@ import { useContext } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Footer } from "../../Components/Fotter";
-import { useEffect } from "react";
 
 export const PageHome = () => {
-  const { products, searchProducts, onSearch } = useContext(ProductsContext);
+  const { products, searchProducts, onSearch, productsNews } =
+    useContext(ProductsContext);
 
-  useEffect(() => {}, []);
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "rgb(250,250,251)" }}>
       <Header onCart={false} />
-      <Typography margin="30px" variant="h3">
-        Smartphones
-      </Typography>
-      <Box
-        sx={{ display: "flex", justifyContent: "center", marginLeft: "3em" }}
+      <Typography
+        margin="30px"
+        variant="h3"
+        sx={{ fontSize: { xs: "0.8rem", md: "1.8rem" } }}
+        fontFamily="Roboto, sans-serif"
       >
+        Mais pedidos
+      </Typography>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <ListProducts
           cartItem={false}
           products={onSearch ? searchProducts : products}
@@ -27,7 +29,22 @@ export const PageHome = () => {
         {searchProducts.length < 1 && onSearch && (
           <Typography>Nenhum item corresponde a busca</Typography>
         )}
-        <Box sx={{ flexGrow: 1 }} />
+      </Box>
+      <Typography
+        margin="30px"
+        variant="h3"
+        sx={{ fontSize: { xs: "0.8rem", md: "1.8rem" } }}
+      >
+        Acabaram de chegar
+      </Typography>
+      <Box
+        sx={{
+          justifyContent: "center",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <ListProducts products={productsNews} />
       </Box>
       <Footer />
     </Box>
