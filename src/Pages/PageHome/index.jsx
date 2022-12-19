@@ -14,10 +14,9 @@ export const PageHome = () => {
     <Box sx={{ backgroundColor: "rgb(250,250,251)" }}>
       <Header onCart={false} />
       <Typography
-        margin="30px"
-        variant="h3"
-        sx={{ fontSize: { xs: "0.8rem", md: "1.8rem" } }}
-        fontFamily="Roboto, sans-serif"
+        sx={{ fontSize: { xs: "16px", md: "1.8rem" }, fontWeight: 600 }}
+        margin="20px"
+        variant="h5"
       >
         Mais pedidos
       </Typography>
@@ -31,9 +30,12 @@ export const PageHome = () => {
         )}
       </Box>
       <Typography
+        sx={{
+          fontSize: { xs: "16px", md: "1.8rem" },
+          fontWeight: 600,
+        }}
         margin="30px"
-        variant="h3"
-        sx={{ fontSize: { xs: "0.8rem", md: "1.8rem" } }}
+        variant="h5"
       >
         Acabaram de chegar
       </Typography>

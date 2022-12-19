@@ -33,9 +33,9 @@ export const ProductsProvider = ({ children }) => {
     },
     {
       image:
-        "https://i0.wp.com/anamariabraga.globo.com/wp-content/uploads/2019/04/receitas-brigadeiro.jpg?fit=1092%2C818&ssl=1",
-      title: "Brigadeiros mistos",
-      price: "R$26,00",
+        "https://cooknenjoy.com/wp-content/uploads/2016/12/cookies-01-252x142.jpg",
+      title: "Cookies de avelã",
+      price: "R$56,00",
     },
     {
       image:
